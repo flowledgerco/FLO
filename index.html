@@ -3,157 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlowLedger - Comprehensive financial management for freelancers and small businesses. Track income/expenses, budgets, invoices, mileage, taxes, and more with business/personal separation.">
     <title>FlowLedger - Financial Management for Freelancers</title>
-    <meta name="description" content="FlowLedger is a comprehensive iOS app for tracking income, expenses, budgets, invoices, mileage, and taxes for freelancers and small businesses.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #14B8A6;
+            --primary-dark: #0D9488;
+            --secondary: #10B981;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --border: #E5E7EB;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo-icon {
+            height: 40px;
+            margin-right: 0.5rem;
+            border-radius: 8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        .feature-card p {
+            color: #6B7280;
+        }
+        /* Integration Section */
+        .integration {
+            background: var(--light);
+        }
+        .integration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .integration-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .integration-text ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .integration-text li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .integration-text li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        .integration-image {
+            text-align: center;
+        }
+        .plaid-badge {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .tech-badge {
+            padding: 0.5rem 1rem;
+            background: var(--light);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        /* Security Section */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .security-item {
+            padding: 1.5rem;
+            background: white;
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .security-item i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .integration-content {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">FlowLedger</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="flowledger-icon.png" alt="FlowLedger Icon" class="logo-icon"> FlowLedger</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#integration">Technology</a></li>
+                <li><a href="#security">Security</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="https://github.com/flowledgerco/flowledger" target="_blank">GitHub</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <h1>Welcome to FlowLedger</h1>
-            <p>Your all-in-one financial management app for freelancers and small businesses. Track income, expenses, budgets, invoices, mileage, taxes, and more—with seamless separation of business and personal finances.</p>
-            <a href="https://apps.apple.com/app/flowledger" class="btn">Download on App Store (Coming Soon)</a>
-        </section>
-
-        <section class="capabilities">
-            <h2>Key Capabilities</h2>
-            <div class="capability-grid">
-                <div class="capability-item">
-                    <h3>Dashboard and Overview</h3>
-                    <ul>
-                        <li>Overall financial summary with income, expenses, and net balance.</li>
-                        <li>Breakdowns by business/personal categories.</li>
-                        <li>Quick stats: weekly/monthly expenses, pending invoices, tax deadlines.</li>
-                        <li>Cards for receipt management, tax estimates, invoices, and mileage.</li>
-                        <li>Filtering by business, personal, or all.</li>
-                        <li>Visual budget progress and tax payment indicators.</li>
-                    </ul>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Financial Management for Freelancers</h1>
+        <p>Your all-in-one iOS app for tracking income/expenses, budgets, invoices, mileage, taxes, and more—with seamless business/personal separation.</p>
+        <div class="cta-buttons">
+            <a href="#features" class="btn btn-primary">Learn More</a>
+            <a href="https://github.com/flowledgerco/flowledger" class="btn btn-secondary" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2>Everything You Need to Manage Your Finances</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Dashboard & Overview</h3>
+                    <p>Real-time summaries of income, expenses, budgets, invoices, mileage, and tax estimates with business/personal filtering.</p>
                 </div>
-                <div class="capability-item">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
                     <h3>Transactions Management</h3>
-                    <ul>
-                        <li>Add/edit transactions with amount, date, merchant, notes, category, and receipts.</li>
-                        <li>List, search, sort, and filter by finance type (business/personal).</li>
-                        <li>Auto/manual categorization with tax-deductible flags.</li>
-                        <li>Intelligent matching to receipts or bank imports.</li>
-                        <li>Recurring transactions: create, edit, list, and auto-generate (e.g., monthly rent).</li>
-                        <li>Flag uncategorized or duplicates.</li>
-                        <li>Income vs. expense classification with formatted displays.</li>
-                    </ul>
+                    <p>Add/edit/list transactions with auto-categorization, receipt matching, and recurring automation for business/personal finances.</p>
                 </div>
-                <div class="capability-item">
-                    <h3>Receipts and Scanning</h3>
-                    <ul>
-                        <li>Scan receipts via camera/photo library with OCR for data extraction.</li>
-                        <li>Auto-categorization, confidence scoring, and tax deduction suggestions.</li>
-                        <li>Split receipts between business/personal (percentage or line items).</li>
-                        <li>Match to transactions or mark as cash.</li>
-                        <li>View/zoom/edit receipt images with gestures.</li>
-                        <li>Flag for review and provide insights.</li>
-                        <li>Secure image storage and management.</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-receipt"></i></div>
+                    <h3>Receipts & Scanning</h3>
+                    <p>OCR scanning, intelligent splitting, matching to transactions, and tax deduction suggestions—all stored securely on-device.</p>
                 </div>
-                <div class="capability-item">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-wallet"></i></div>
                     <h3>Budgets Management</h3>
-                    <ul>
-                        <li>Create/edit budgets by month, category, and finance type (envelope, simple, zero-based, percentage).</li>
-                        <li>List with progress tracking (spent vs. planned).</li>
-                        <li>Monthly rollover for unused amounts.</li>
-                        <li>Warnings for nearing limits (e.g., 80% threshold).</li>
-                        <li>Integration with recurring transactions.</li>
-                    </ul>
+                    <p>Create/track budgets by type (envelope, zero-based) with rollovers, warnings, and integration with recurring transactions.</p>
                 </div>
-                <div class="capability-item">
-                    <h3>Invoices and Client Management</h3>
-                    <ul>
-                        <li>Create invoices with auto-numbers, clients, items, taxes, discounts.</li>
-                        <li>Edit/view details, status (draft, sent, paid, overdue), payments.</li>
-                        <li>Mark paid/partially paid; create linked transactions.</li>
-                        <li>Send/track reminders for overdue invoices.</li>
-                        <li>List/filter by status; search functionality.</li>
-                        <li>Aging reports with charts.</li>
-                        <li>Manage clients: add/edit/delete with contacts, terms, stats (invoiced, paid, reliability).</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-file-invoice"></i></div>
+                    <h3>Invoices & Clients</h3>
+                    <p>Generate invoices, manage clients, send reminders, track payments, and generate aging reports with stats.</p>
                 </div>
-                <div class="capability-item">
-                    <h3>Mileage Tracking</h3>
-                    <ul>
-                        <li>Real-time auto-tracking with start/stop and background persistence.</li>
-                        <li>Manual entry with addresses, distance, purpose.</li>
-                        <li>IRS deductions based on rates (e.g., 2025: $0.67/mile).</li>
-                        <li>List/filter by period; stats for miles, deductions.</li>
-                        <li>View details with maps/routes; export CSV.</li>
-                        <li>Recover incomplete trips.</li>
-                        <li>Diagnostics for issues (permissions, battery tips).</li>
-                    </ul>
-                </div>
-                <div class="capability-item">
-                    <h3>Taxes and Deductions</h3>
-                    <ul>
-                        <li>Quarterly estimates using 2025 IRS brackets/deductions.</li>
-                        <li>Configure filing status, state rates, safe harbor.</li>
-                        <li>Flag deductions from receipts/transactions.</li>
-                        <li>Notifications for deadlines/payments.</li>
-                        <li>Year-end summaries with categories/savings estimates.</li>
-                    </ul>
-                </div>
-                <div class="capability-item">
-                    <h3>Reports and Exports</h3>
-                    <ul>
-                        <li>Reports with charts: income/expenses, budgets, categories, periods.</li>
-                        <li>Export CSV/PDF (transactions, budgets, invoices, mileage) RFC 4180 compliant.</li>
-                        <li>Share via system sheet with previews.</li>
-                    </ul>
-                </div>
-                <div class="capability-item">
-                    <h3>Settings and Security</h3>
-                    <ul>
-                        <li>Biometric/passcode protection (4/6-digit, Face ID/Touch ID).</li>
-                        <li>Preferences: currencies, budget types, invoice terms, notifications.</li>
-                        <li>Data export/import for backups.</li>
-                        <li>App info, version, features.</li>
-                        <li>Dark mode, accessibility, localization.</li>
-                    </ul>
-                </div>
-                <div class="capability-item">
-                    <h3>Notifications and Automation</h3>
-                    <ul>
-                        <li>Push for taxes, invoices, recurrings, budgets.</li>
-                        <li>Background tasks for checks (reminders, instances).</li>
-                        <li>Widgets for quick stats/timers.</li>
-                    </ul>
-                </div>
-                <div class="capability-item">
-                    <h3>General App Features</h3>
-                    <ul>
-                        <li>Secure SwiftData storage with app groups.</li>
-                        <li>Business/personal separation across features.</li>
-                        <li>Error handling with feedback.</li>
-                        <li>Previews/diagnostics for dev/testing.</li>
-                        <li>Logging, concurrency safety, optimizations.</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-car"></i></div>
+                    <h3>Mileage & Taxes</h3>
+                    <p>Auto/manual tracking with IRS deductions, tax estimates using 2025 brackets, and year-end summaries.</p>
                 </div>
             </div>
-        </section>
-    </main>
-
+        </div>
+    </section>
+    <!-- Integration Section (Adapted to Technology) -->
+    <section id="integration" class="integration">
+        <div class="container">
+            <h2>Powered by Apple Technologies</h2>
+            <div class="integration-content">
+                <div class="integration-text">
+                    <h3>Modern iOS Development Stack</h3>
+                    <p>FlowLedger is built using Apple's latest frameworks for secure, efficient financial management on iOS.</p>
+                    <ul>
+                        <li>SwiftUI for intuitive user interfaces</li>
+                        <li>SwiftData for secure local storage</li>
+                        <li>VisionKit for receipt OCR scanning</li>
+                        <li>CoreLocation for mileage tracking</li>
+                        <li>UserNotifications for timely reminders</li>
+                    </ul>
+                    <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Core Technologies</h4>
+                    <div class="tech-stack">
+                        <span class="tech-badge">SwiftUI</span>
+                        <span class="tech-badge">SwiftData</span>
+                        <span class="tech-badge">Vision</span>
+                        <span class="tech-badge">CoreLocation</span>
+                        <span class="tech-badge">Charts</span>
+                    </div>
+                </div>
+                <div class="integration-image">
+                    <div class="plaid-badge">
+                        <i class="fab fa-apple"></i> Built for iOS
+                    </div>
+                    <p style="margin-top: 2rem; color: #6B7280;">
+                        Leveraging Apple's ecosystem for privacy-focused, high-performance apps.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Security Section -->
+    <section id="security">
+        <div class="container">
+            <h2>Security & Privacy First</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <h4><i class="fas fa-lock"></i> Biometric Protection</h4>
+                    <p>Face ID/Touch ID and passcode locking for app access.</p>
+                </div>
+                <div class="security-item">
+                    <h4><i class="fas fa-database"></i> Local Storage</h4>
+                    <p>All data stored on-device with SwiftData—no cloud syncing without consent.</p>
+                </div>
+                <div class="security-item">
+                    <h4><i class="fas fa-user-shield"></i> Privacy Controls</h4>
+                    <p>Granular permissions for camera, location, and photos.</p>
+                </div>
+                <div class="security-item">
+                    <h4><i class="fas fa-shield-alt"></i> Compliance</h4>
+                    <p>Designed for GDPR/CCPA with on-device processing for sensitive financial data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Coming Soon to the App Store</h2>
+            <p>
+                Be the first to know when FlowLedger launches. Comprehensive financial tools for freelancers are almost here.
+            </p>
+            <a href="mailto:flowledgerco@gmail.com?subject=FlowLedger%20Early%20Access" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Join the Waitlist
+            </a>
+            <div style="margin-top: 2rem;">
+                <a href="https://github.com/flowledgerco/flowledger" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i> Follow Development
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Finch & Poppy LLC. All rights reserved.</p>
-        <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="footer-links">
+            <a href="https://github.com/flowledgerco/flowledger">GitHub</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+       
+        <div class="social-links">
+            <a href="https://github.com/flowledgerco/flowledger" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/flowledgerco" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/company/flowledgerco" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2025 Finch & Poppy Co LLC. All rights reserved.</p>
+        <p style="opacity: 0.7;">Made with ❤️ by the FlowLedger Team</p>
     </footer>
 </body>
 </html>
