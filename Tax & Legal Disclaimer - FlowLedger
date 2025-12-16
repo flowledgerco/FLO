@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax & Legal Disclaimer - FlowLedger</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 { color: #14B8A6; }
+        .warning { 
+            background: #FFF3CD; 
+            border-left: 4px solid #FFA500; 
+            padding: 15px; 
+            margin: 20px 0; 
+        }
+        .section { margin: 30px 0; }
+    </style>
+</head>
+<body>
+    <h1>Tax & Legal Disclaimer</h1>
+    
+    <div class="warning">
+        <strong>⚠️ Important Notice:</strong> FlowLedger is a financial tracking tool, 
+        not a substitute for professional tax, accounting, or legal advice.
+    </div>
+
+    <div class="section">
+        <h2>About This App</h2>
+        <p>FlowLedger ("the App") is provided "as is" without warranties of any kind. 
+        The tax estimates, calculations, and financial tracking features are tools designed 
+        to assist with financial management and organization. They do not constitute 
+        professional tax, accounting, or legal advice.</p>
+    </div>
+
+    <div class="section">
+        <h2>User Responsibilities</h2>
+        <p>As a user of FlowLedger, you are responsible for:</p>
+        <ul>
+            <li>Verifying all tax calculations with a qualified tax professional</li>
+            <li>Ensuring compliance with current IRS regulations and state tax laws</li>
+            <li>Maintaining accurate financial records as required by law</li>
+            <li>Reviewing all estimates and reports before making financial decisions</li>
+            <li>Consulting with certified public accountants (CPAs) or tax advisors for official tax preparation</li>
+            <li>Understanding that tax laws change frequently and app data may not reflect the most current regulations</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Tax Estimate Limitations</h2>
+        <p>Tax estimates provided by FlowLedger are based on:</p>
+        <ul>
+            <li>Self-reported transaction data entered by users</li>
+            <li>Generalized federal and state tax rates</li>
+            <li>Standard deductions and common scenarios</li>
+            <li>IRS guidance current as of the app's last update</li>
+        </ul>
+        <p>These estimates may not account for:</p>
+        <ul>
+            <li>Complex tax situations (investments, real estate, foreign income, etc.)</li>
+            <li>Recent changes to tax law</li>
+            <li>State or local tax variations</li>
+            <li>Individual deductions, credits, or special circumstances</li>
+            <li>Alternative Minimum Tax (AMT) considerations</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Limitation of Liability</h2>
+        <p>Finch & Poppy LLC and FlowLedger explicitly disclaim all liability for:</p>
+        <ul>
+            <li>Tax calculation errors, inaccuracies, or omissions</li>
+            <li>Missed deadlines, late penalties, or IRS audits</li>
+            <li>Financial decisions based on app outputs or estimates</li>
+            <li>Changes to tax laws not reflected in the app</li>
+            <li>Data accuracy issues resulting from user input errors</li>
+            <li>Lost deductions or overpaid taxes due to incomplete records</li>
+            <li>Any financial losses, damages, or consequences resulting from use of the app</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>No Professional Relationship</h2>
+        <p>Use of FlowLedger does not create a professional relationship between you and 
+        Finch & Poppy LLC, its employees, or any tax professionals. The app is a self-service 
+        tool for personal financial organization.</p>
+    </div>
+
+    <div class="section">
+        <h2>Recommendation</h2>
+        <p>We strongly recommend working with licensed professionals:</p>
+        <ul>
+            <li><strong>Certified Public Accountants (CPAs)</strong> for tax preparation and planning</li>
+            <li><strong>Enrolled Agents (EAs)</strong> for IRS representation</li>
+            <li><strong>Tax Attorneys</strong> for complex legal tax matters</li>
+            <li><strong>Financial Advisors</strong> for comprehensive financial planning</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Updates to This Disclaimer</h2>
+        <p>We may update this disclaimer from time to time. Continued use of the app 
+        constitutes acceptance of any changes. Check this page periodically for updates.</p>
+    </div>
+
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>For questions about this disclaimer or FlowLedger:</p>
+        <p>Email: <a href="mailto:hello@finchandpoppy.com">hello@finchandpoppy.com</a></p>
+        <p>Website: <a href="https://flowledgerco.github.io/flowledgerco">flowledgerco.github.io/flowledgerco</a></p>
+    </div>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em;">
+        <p>© 2025 Finch & Poppy LLC. All rights reserved.</p>
+        <p>Last updated: December 2025</p>
+    </footer>
+</body>
+</html>
